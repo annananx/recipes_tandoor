@@ -1,6 +1,5 @@
 <template>
     <div id="app" class="search" style="padding-bottom: 60px">
-        <RecipeSwitcher ref="ref_recipe_switcher" />
         <div class="row">
             <div class="col-12 col-xl-10 col-lg-10 offset-xl-1 offset-lg-1">
                 <div class="row">
@@ -873,7 +872,6 @@ import moment from "moment"
 import Multiselect from "vue-multiselect"
 
 import BottomNavigationBar from "@/components/BottomNavigationBar.vue"
-import RecipeSwitcher from "@/components/Buttons/RecipeSwitcher"
 import GenericMultiselect from "@/components/GenericMultiselect"
 import MealPlanEditModal from "@/components/MealPlanEditModal.vue"
 import RecipeCard from "@/components/RecipeCard"
@@ -890,7 +888,7 @@ let UI_COOKIE_NAME = "ui_search_settings"
 export default {
     name: "RecipeSearchView",
     mixins: [ResolveUrlMixin, ApiMixin, ToastMixin],
-    components: { GenericMultiselect, RecipeCard, RecipeSwitcher, Multiselect, BottomNavigationBar, MealPlanEditModal },
+    components: { GenericMultiselect, RecipeCard, Multiselect, BottomNavigationBar, MealPlanEditModal },
     data() {
         return {
             // this.Models and this.Actions inherited from ApiMixin

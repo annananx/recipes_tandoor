@@ -6,7 +6,6 @@
         </template>
 
         <div v-if="!loading" style="padding-bottom: 60px">
-            <RecipeSwitcher ref="ref_recipe_switcher" @switch="quickSwitch($event)" v-if="show_recipe_switcher"/>
             <div class="recipe__title row">
                 <div class="col-12" style="text-align: center">
                     <h3>{{ recipe.name }}</h3>
@@ -180,7 +179,6 @@ import LastCooked from "@/components/LastCooked"
 import IngredientsCard from "@/components/IngredientsCard"
 import StepComponent from "@/components/StepComponent"
 import KeywordsComponent from "@/components/KeywordsComponent"
-import RecipeSwitcher from "@/components/Buttons/RecipeSwitcher"
 import CustomInputSpinButton from "@/components/CustomInputSpinButton"
 import {ApiApiFactory} from "@/utils/openapi/api";
 import ImportTandoor from "@/components/Modals/ImportTandoor.vue";
@@ -205,7 +203,6 @@ export default {
         KeywordsComponent,
         LoadingSpinner,
         AddRecipeToBook,
-        RecipeSwitcher,
         CustomInputSpinButton,
         PropertyViewComponent,
     },
