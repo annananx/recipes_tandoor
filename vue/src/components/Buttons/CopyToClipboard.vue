@@ -33,11 +33,8 @@ export default {
             navigator.clipboard.writeText(text).then(makeToast(this.$t("Success"), this.$t("SuccessClipboard"), "success"))
         },
         delimited: function () {
-            let csvContent = ""
-            let delim = this.settings.csv_delim || ","
-            let prefix = this.settings.csv_prefix || ""
-            csvContent += [prefix + Object.keys(this.items[0]).join(delim), ...this.items.map((x) => prefix + Object.values(x).join(delim))].join("\n").replace(/(^\[)|(\]$)/gm, "")
-            return csvContent
+            let rows = this.items.map((x) => Object.values(x).filter(Boolean).join(" "))
+            return rows.join("\n");
         },
         table: function () {
             let table = ""
