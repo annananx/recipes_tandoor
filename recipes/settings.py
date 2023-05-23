@@ -66,7 +66,6 @@ LOGGING = {
     },
 }
 
-
 # allow djangos wsgi server to server mediafiles
 GUNICORN_MEDIA = bool(int(os.getenv('GUNICORN_MEDIA', False)))
 
@@ -80,7 +79,7 @@ else:
 COMMENT_PREF_DEFAULT = bool(int(os.getenv('COMMENT_PREF_DEFAULT', True)))
 FRACTION_PREF_DEFAULT = bool(int(os.getenv('FRACTION_PREF_DEFAULT', False)))
 KJ_PREF_DEFAULT = bool(int(os.getenv('KJ_PREF_DEFAULT', False)))
-STICKY_NAV_PREF_DEFAULT = bool(int(os.getenv('STICKY_NAV_PREF_DEFAULT', True)))
+STICKY_NAV_PREF_DEFAULT = bool(int(os.getenv('STICKY_NAV_PREF_DEFAULT', False)))
 MAX_OWNED_SPACES_PREF_DEFAULT = int(os.getenv('MAX_OWNED_SPACES_PREF_DEFAULT', 100))
 UNAUTHENTICATED_THEME_FROM_SPACE = int(os.getenv('UNAUTHENTICATED_THEME_FROM_SPACE', 0))
 FORCE_THEME_FROM_SPACE = int(os.getenv('FORCE_THEME_FROM_SPACE', 0))
@@ -130,9 +129,7 @@ REDIS_HOST = os.getenv('REDIS_HOST', None)
 REDIS_PORT = int(os.getenv('REDIS_PORT', 6379))
 REDIS_USERNAME = os.getenv('REDIS_USERNAME', None)
 REDIS_PASSWORD = os.getenv('REDIS_PASSWORD', None)
-REDIS_DATABASES = {
-    'STATS': 0
-}
+REDIS_DATABASES = {'STATS': 0}
 
 MESSAGE_TAGS = {messages.ERROR: 'danger'}
 
@@ -289,11 +286,7 @@ if LDAP_AUTH:
     if 'AUTH_LDAP_TLS_CACERTFILE' in os.environ:
         AUTH_LDAP_GLOBAL_OPTIONS = {ldap.OPT_X_TLS_CACERTFILE: os.getenv('AUTH_LDAP_TLS_CACERTFILE')}
     if DEBUG:
-        LOGGING["loggers"]["django_auth_ldap"] = {
-            "level": "DEBUG",
-            "handlers": ["console"]
-        }
-
+        LOGGING["loggers"]["django_auth_ldap"] = {"level": "DEBUG", "handlers": ["console"]}
 
 AUTHENTICATION_BACKENDS += [
     'django.contrib.auth.backends.ModelBackend',
@@ -578,10 +571,7 @@ DISABLE_EXTERNAL_CONNECTORS = bool(int(os.getenv('DISABLE_EXTERNAL_CONNECTORS', 
 EXTERNAL_CONNECTORS_QUEUE_SIZE = int(os.getenv('EXTERNAL_CONNECTORS_QUEUE_SIZE', 100))
 
 # ACCOUNT_SIGNUP_FORM_CLASS = 'cookbook.forms.AllAuthSignupForm'
-ACCOUNT_FORMS = {
-    'signup': 'cookbook.forms.AllAuthSignupForm',
-    'reset_password': 'cookbook.forms.CustomPasswordResetForm'
-}
+ACCOUNT_FORMS = {'signup': 'cookbook.forms.AllAuthSignupForm', 'reset_password': 'cookbook.forms.CustomPasswordResetForm'}
 
 ACCOUNT_EMAIL_UNKNOWN_ACCOUNTS = False
 ACCOUNT_RATE_LIMITS = {
