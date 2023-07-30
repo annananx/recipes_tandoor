@@ -121,8 +121,6 @@
         </div>
 
 
-        <add-recipe-to-book :recipe="recipe"></add-recipe-to-book>
-
         <div class="row text-center d-print-none" style="margin-top: 3vh; margin-bottom: 3vh"
              v-if="share_uid !== 'None' && !loading">
             <div class="col col-md-12">
@@ -150,7 +148,6 @@ import ImageViewer from "@/components/ImageViewer"
 
 import moment from "moment"
 import LoadingSpinner from "@/components/LoadingSpinner"
-import AddRecipeToBook from "@/components/Modals/AddRecipeToBook"
 import RecipeRating from "@/components/RecipeRating"
 import LastCooked from "@/components/LastCooked"
 import StepComponent from "@/components/StepComponent"
@@ -177,7 +174,6 @@ export default {
         RecipeContextMenu,
         KeywordsComponent,
         LoadingSpinner,
-        AddRecipeToBook,
         CustomInputSpinButton,
         PropertyViewComponent,
     },
