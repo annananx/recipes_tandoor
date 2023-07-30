@@ -2,7 +2,7 @@
     <div>
         <template v-if="recipe && recipe.loading">
             <b-card no-body v-hover style="height: 100%">
-                <b-card-img-lazy style="height: 15vh; object-fit: cover" class="" :src="placeholder_image" v-bind:alt="$t('Recipe_Image')" top></b-card-img-lazy>
+                <b-card-img-lazy style="height: 15vh; min-height: 150px; object-fit: cover" class="" :src="placeholder_image" v-bind:alt="$t('Recipe_Image')" top></b-card-img-lazy>
 
                 <b-card-body class="p-4">
                     <h6>
@@ -22,7 +22,7 @@
                 <a :href="recipe_link">
                     <div class="content">
                         <div class="content-overlay" v-if="recipe.description !== null && recipe.description !== ''"></div>
-                        <b-card-img-lazy style="height: 15vh; object-fit: cover" class="" :src="recipe_image" v-bind:alt="$t('Recipe_Image')" top></b-card-img-lazy>
+                        <b-card-img-lazy style="height: 15vh; min-height: 150px; object-fit: cover" class="" :src="recipe_image" v-bind:alt="$t('Recipe_Image')" top></b-card-img-lazy>
 
                         <div class="content-details">
                             <p class="content-text">
