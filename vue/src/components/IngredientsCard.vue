@@ -8,7 +8,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body p-1 p-md-3">
+            <div class="card-body">
 
                 <div class="row no-gutter">
                     <div class="col-12 m-0" :class="{ 'p-0': !header }">
