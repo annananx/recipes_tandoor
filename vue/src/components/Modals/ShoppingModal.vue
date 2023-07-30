@@ -10,7 +10,7 @@
                     <b-card-header header-tag="header" class="p-0" role="tab">
                         <b-button block v-b-toggle.accordion-0 class="text-left" variant="outline-info">{{ recipe.name }}</b-button>
                     </b-card-header>
-                    <b-collapse id="accordion-0" class="p-2" visible accordion="my-accordion" role="tabpanel">
+                    <b-collapse id="accordion-0" class="pt-2 pb-2" visible accordion="my-accordion" role="tabpanel">
                         <div>
                             <table class="table table-sm mb-0">
                                 <ingredient-component
