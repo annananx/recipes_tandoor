@@ -15,7 +15,7 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link" @click="useShoppingListStore().undoChange()"> <i class="fas fa-undo fa-fw"></i>&nbsp;</a>
                         </li>
-                        <li class="nav-item dropdown d-none d-md-inline-block">
+                        <li class="nav-item dropdown md-inline-block">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-download"></i>&nbsp;
                             </a>
