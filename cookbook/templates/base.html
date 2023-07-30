@@ -113,6 +113,14 @@
                 <a class="nav-link" href="{% url 'view_shopping' %}"><i
                         class="fas fa-fw fa-shopping-cart"></i> {% trans 'Shopping' %}</a>
             </li>
+            <li class="nav-item {% if request.resolver_match.url_name in 'data_import_url' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'data_import_url' %}"><i
+                        class="fas fa-fw fa-file-import"></i> {% trans 'Import Recipe' %}</a>
+            </li>
+            <li class="nav-item {% if request.resolver_match.url_name in 'new_recipe' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'new_recipe' %}"><i
+                        class="fas fa-fw fa-plus"></i> {% trans 'Create' %}</a>
+            </li>
             {% plugin_main_nav_templates as plugin_main_nav_templates %}
             {% for pn in plugin_main_nav_templates %}
                 {% include pn %}
@@ -297,19 +305,6 @@
                             </div>
 
                         </div>
-                    </div>
-                </li>
-                <li class="nav-item dropdown {% if request.resolver_match.url_name in 'data_import_url,new_recipe' %}active{% endif %}">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false"><i
-                            class="fas fa-fw fa-plus fa-lg"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-center"
-                         aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{% url 'data_import_url' %}"><i
-                                class="fas fa-file-import"></i> {% trans 'Import Recipe' %}</a>
-                        <a class="dropdown-item " href="{% url 'new_recipe' %}"><i
-                                class="fas fa-plus"></i> {% trans 'Create' %}</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown {% if request.resolver_match.url_name in 'view_space,view_settings,view_history,view_system,docs_markdown' %}active{% endif %}">
