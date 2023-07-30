@@ -112,12 +112,6 @@
             <hr/>
             <img class="img img-fluid rounded" :src="recipe.image" :alt="$t('Recipe_Image')"
                 v-if="recipe.image !== null" @load="onImgLoad" :style="{ 'max-height': ingredient_height }"/>
-
-            <div class="recipe__properties row" style="margin-top: 2vh; ">
-                <div class="col-lg-6 offset-lg-3 col-12">
-                    <property-view-component :recipe="recipe" :servings="servings" @foodUpdated="loadRecipe(recipe.id)"></property-view-component>
-                </div>
-            </div>
         </div>
 
 
@@ -155,7 +149,6 @@ import KeywordsComponent from "@/components/KeywordsComponent"
 import CustomInputSpinButton from "@/components/CustomInputSpinButton"
 import {ApiApiFactory} from "@/utils/openapi/api";
 import ImportTandoor from "@/components/Modals/ImportTandoor.vue";
-import PropertyViewComponent from "@/components/PropertyViewComponent.vue";
 
 Vue.prototype.moment = moment
 
@@ -175,7 +168,6 @@ export default {
         KeywordsComponent,
         LoadingSpinner,
         CustomInputSpinButton,
-        PropertyViewComponent,
     },
     computed: {
         ingredient_factor: function () {
