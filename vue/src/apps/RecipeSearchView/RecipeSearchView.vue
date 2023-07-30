@@ -854,8 +854,6 @@
                 </div>
 
                 <meal-plan-edit-modal :entry="mealplan_entry_edit" :create_date="mealplan_default_date"></meal-plan-edit-modal>
-
-                <bottom-navigation-bar active-view="view_search"></bottom-navigation-bar>
             </div>
         </div>
     </div>
@@ -871,7 +869,6 @@ import _debounce from "lodash/debounce"
 import moment from "moment"
 import Multiselect from "vue-multiselect"
 
-import BottomNavigationBar from "@/components/BottomNavigationBar.vue"
 import GenericMultiselect from "@/components/GenericMultiselect"
 import MealPlanEditModal from "@/components/MealPlanEditModal.vue"
 import RecipeCard from "@/components/RecipeCard"
@@ -888,7 +885,7 @@ let UI_COOKIE_NAME = "ui_search_settings"
 export default {
     name: "RecipeSearchView",
     mixins: [ResolveUrlMixin, ApiMixin, ToastMixin],
-    components: { GenericMultiselect, RecipeCard, Multiselect, BottomNavigationBar, MealPlanEditModal },
+    components: { GenericMultiselect, RecipeCard, Multiselect, MealPlanEditModal },
     data() {
         return {
             // this.Models and this.Actions inherited from ApiMixin

@@ -422,53 +422,6 @@
 
         <shopping-modal v-if="new_recipe.id" :recipe="new_recipe" :modal_id="new_recipe.id"
                         :servings="new_recipe.servings" :mealplan="undefined" @finish="finishShopping"/>
-
-        <bottom-navigation-bar active-view="view_shopping">
-            <template #custom_nav_content v-if="current_tab <= 1">
-                <b-row class="mb-2">
-                    <b-col cols="12">
-                        <template v-if="current_tab===0">
-                            <b-input-group>
-                                <b-form-input v-model="new_item.ingredient" :placeholder="$t('Shopping_input_placeholder')"
-                                              @keyup.enter="addItem"></b-form-input>
-                                <b-input-group-append>
-                                    <b-button @click="addItem" variant="success">
-                                        <i class="fas fa-cart-plus "/>
-                                    </b-button>
-                                </b-input-group-append>
-                            </b-input-group>
-                        </template>
-                        <template v-if="current_tab===1">
-                            <generic-multiselect
-                                :model="Models.RECIPE"
-                                :multiple="false"
-                                @change="addRecipeToShopping($event.val)"
-                            ></generic-multiselect>
-                        </template>
-
-                    </b-col>
-                </b-row>
-
-            </template>
-
-            <template #custom_create_functions>
-
-                <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">{{ $t('Shopping_list') }}</h6>
-
-                <DownloadPDF dom="#shoppinglist" name="shopping.pdf" :label="$t('download_pdf')"
-                             icon="far fa-file-pdf fa-fw"/>
-                <DownloadCSV :items="shopping_list_store.get_flat_entries" :delim="user_preference_store.user_settings.csv_delim" name="shopping.csv"
-                             :label="$t('download_csv')" icon="fas fa-file-csv fa-fw"/>
-                <CopyToClipboard :items="shopping_list_store.get_flat_entries" :settings="user_preference_store.user_settings"
-                                 :label="$t('copy_to_clipboard')"
-                                 icon="fas fa-clipboard-list fa-fw"/>
-                <CopyToClipboard :items="shopping_list_store.get_flat_entries" :settings="user_preference_store.user_settings" format="table"
-                                 :label="$t('copy_markdown_table')" icon="fab fa-markdown fa-fw"/>
-
-
-            </template>
-        </bottom-navigation-bar>
     </div>
 </template>
 
@@ -487,15 +440,13 @@ import CopyToClipboard from "@/components/Buttons/CopyToClipboard"
 import GenericMultiselect from "@/components/GenericMultiselect"
 import ShoppingModal from "@/components/Modals/ShoppingModal"
 
-import {ApiMixin, getUserPreference, StandardToasts, makeToast, ResolveUrlMixin, FormatMixin} from "@/utils/utils"
+import {ApiMixin, StandardToasts, ResolveUrlMixin, FormatMixin} from "@/utils/utils"
 import {ApiApiFactory} from "@/utils/openapi/api"
 import ShoppingSettingsComponent from "@/components/Settings/ShoppingSettingsComponent";
 
 Vue.use(BootstrapVue)
 Vue.use(VueCookies)
 
-import {Workbox} from 'workbox-window';
-import BottomNavigationBar from "@/components/BottomNavigationBar.vue";
 import {useShoppingListStore} from "@/stores/ShoppingListStore";
 import {useUserPreferenceStore} from "@/stores/UserPreferenceStore";
 import NumberScalerComponent from "@/components/NumberScalerComponent.vue";
@@ -514,7 +465,6 @@ export default {
         ShoppingModal,
         draggable,
         ShoppingSettingsComponent,
-        BottomNavigationBar,
     },
 
     data() {

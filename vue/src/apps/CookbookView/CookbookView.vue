@@ -95,17 +95,6 @@
             </b-card>
         </draggable>
         </div>
-
-        <bottom-navigation-bar active-view="view_books">
-            <template #custom_create_functions>
-                <div class="dropdown-divider" ></div>
-                <h6 class="dropdown-header">{{ $t('Books')}}</h6>
-
-                <a class="dropdown-item" @click="createNew()"><i
-                                class="fa fa-book"></i> {{$t("Create")}}</a>
-
-            </template>
-        </bottom-navigation-bar>
     </div>
 </template>
 
@@ -118,14 +107,13 @@ import { ApiApiFactory } from "@/utils/openapi/api"
 import CookbookSlider from "@/components/CookbookSlider"
 import LoadingSpinner from "@/components/LoadingSpinner"
 import { StandardToasts, ApiMixin } from "@/utils/utils"
-import BottomNavigationBar from "@/components/BottomNavigationBar.vue";
 
 Vue.use(BootstrapVue)
 
 export default {
     name: "CookbookView",
     mixins: [ApiMixin],
-    components: { LoadingSpinner, CookbookSlider, BottomNavigationBar, draggable },
+    components: { LoadingSpinner, CookbookSlider, draggable },
     data() {
         return {
             cookbooks: [],

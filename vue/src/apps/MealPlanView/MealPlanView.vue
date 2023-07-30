@@ -223,14 +223,6 @@
             :current_period="current_period"
         ></auto-meal-plan-modal>
 
-        <bottom-navigation-bar active-view="view_plan" :create_links="[{label:$t('Export_To_ICal'), url: iCalUrl, icon:'fas fa-download'}]">
-            <template #custom_create_functions>
-                <h6 class="dropdown-header">{{ $t('Meal_Plan') }}</h6>
-                <a class="dropdown-item" @click="createEntryClick(new Date())"><i
-                    class="fas fa-calendar-plus fa-fw"></i> {{ $t("Create") }}</a>
-            </template>
-
-        </bottom-navigation-bar>
     </div>
 </template>
 
@@ -252,7 +244,6 @@ import VueCookies from "vue-cookies"
 import {ApiMixin, StandardToasts, ResolveUrlMixin} from "@/utils/utils"
 import {CalendarView, CalendarMathMixin} from "vue-simple-calendar/src/components/bundle"
 import {ApiApiFactory} from "@/utils/openapi/api"
-import BottomNavigationBar from "@/components/BottomNavigationBar.vue";
 import {useMealPlanStore} from "@/stores/MealPlanStore";
 import axios from "axios";
 import AutoMealPlanModal from "@/components/AutoMealPlanModal";
@@ -275,7 +266,6 @@ export default {
         ContextMenu,
         ContextMenuItem,
         MealPlanCalenderHeader,
-        BottomNavigationBar,
     },
     mixins: [CalendarMathMixin, ApiMixin, ResolveUrlMixin],
     data: function () {
