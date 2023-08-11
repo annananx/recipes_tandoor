@@ -99,70 +99,8 @@
                 </div>
             </div>
 
-            <div class="row pt-2">
-                <div class="col-md-12">
-
-
-                    <b-card-header header-tag="header" class="p-1" role="tab">
-                        <b-button squared block v-b-toggle.additional_collapse class="text-left"
-                                  variant="outline-primary">{{ $t("additional_options") }}
-                        </b-button>
-                    </b-card-header>
-                    <b-collapse id="additional_collapse" class="mt-2" v-model="additional_visible">
-                        <b-form-group>
-                            <b-input-group-append>
-                                <b-input-group-text squared> {{ $t("Create Food") }}</b-input-group-text>
-                                <b-input-group-text squared>
-                                    <b-form-checkbox v-model="recipe.create_food"></b-form-checkbox>
-                                </b-input-group-text>
-                                <b-input-group-text squared v-if="recipe.create_food"> {{
-                                        $t("Name")
-                                    }}
-                                </b-input-group-text>
-                                <b-form-input squared v-if="recipe.create_food" v-model="recipe.food_name"
-                                              id="food_name"></b-form-input>
-                            </b-input-group-append>
-                            <em class="small text-muted">
-                                {{ $t("create_food_desc") }}
-                            </em>
-                        </b-form-group>
-                        <br/>
-                        <label for="id_name"> {{ $t("Ingredient Overview") }}</label>
-                        <b-form-checkbox v-model="recipe.show_ingredient_overview">
-                            {{ $t('show_ingredient_overview') }}
-                        </b-form-checkbox>
-
-                        <br/>
-                        <label> {{ $t("Imported_From") }}</label>
-                        <b-form-input v-model="recipe.source_url">
-
-                        </b-form-input>
-
-                        <br/>
-                        <label> {{ $t("Private_Recipe") }}</label>
-                        <b-form-checkbox v-model="recipe.private">
-                            {{ $t('Private_Recipe_Help') }}
-                        </b-form-checkbox>
-
-                        <br/>
-                        <label> {{ $t("Share") }}</label>
-                        <generic-multiselect
-                            @change="recipe.shared = $event.val"
-                            parent_variable="recipe.shared"
-                            :initial_selection="recipe.shared"
-                            :label="'display_name'"
-                            :model="Models.USER_NAME"
-                            style="flex-grow: 1; flex-shrink: 1; flex-basis: 0"
-                            v-bind:placeholder="$t('Share')"
-                            :limit="25"
-                        ></generic-multiselect>
-
-
-                    </b-collapse>
-                </div>
-            </div>
-
             <!-- Steps -->
+            <br/>
             <draggable :list="recipe.steps" group="steps" :empty-insert-threshold="10" handle=".handle"
                        @sort="sortSteps()">
                 <div v-for="(step, step_index) in recipe.steps" v-bind:key="step_index">
@@ -645,6 +583,35 @@
                             {{ $t("Add_Step") }}
                         </button>
                     </b-button-group>
+                </div>
+            </div>
+
+            <br/>
+            <div class="card mt-2 mb-2">
+                <div class="card-body pr-2 pl-2 pr-md-5 pl-md-5">
+                    <h4>{{ $t("additional_options") }}</h4>
+
+                    <label> {{ $t("Imported_From") }}</label>
+                    <b-form-input v-model="recipe.source_url" />
+
+                    <br/>
+                    <label> {{ $t("Private_Recipe") }}</label>
+                    <b-form-checkbox v-model="recipe.private">
+                        {{ $t('Private_Recipe_Help') }}
+                    </b-form-checkbox>
+
+                    <br/>
+                    <label> {{ $t("Share") }}</label>
+                    <generic-multiselect
+                            @change="recipe.shared = $event.val"
+                            parent_variable="recipe.shared"
+                            :initial_selection="recipe.shared"
+                            :label="'display_name'"
+                            :model="Models.USER_NAME"
+                            style="flex-grow: 1; flex-shrink: 1; flex-basis: 0"
+                            v-bind:placeholder="$t('Share')"
+                            :limit="25"
+                    ></generic-multiselect>
                 </div>
             </div>
 
