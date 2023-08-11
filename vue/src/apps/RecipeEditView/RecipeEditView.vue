@@ -444,67 +444,6 @@
                                                                     </button>
 
                                                                     <button type="button" class="dropdown-item"
-                                                                            v-if="ingredient.is_header"
-                                                                            @click="ingredient.is_header = false">
-                                                                        <i class="fas fa-leaf fa-fw"></i>
-                                                                        {{ $t("Make_Ingredient") }}
-                                                                    </button>
-
-                                                                    <button type="button" class="dropdown-item"
-                                                                            v-if="!ingredient.no_amount"
-                                                                            @click="ingredient.no_amount = true">
-                                                                        <i class="fas fa-balance-scale-right fa-fw"></i>
-                                                                        {{ $t("Disable_Amount") }}
-                                                                    </button>
-
-                                                                    <button type="button" class="dropdown-item"
-                                                                            v-if="ingredient.no_amount"
-                                                                            @click="ingredient.no_amount = false">
-                                                                        <i class="fas fa-balance-scale-right fa-fw"></i>
-                                                                        {{ $t("Enable_Amount") }}
-                                                                    </button>
-
-
-                                                                    <button type="button" class="dropdown-item"
-                                                                            v-if="!ingredient.always_use_plural_unit"
-                                                                            @click="ingredient.always_use_plural_unit = true">
-                                                                        <i class="fas fa-filter fa-fw"></i>
-                                                                        {{ $t("Use_Plural_Unit_Always") }}
-                                                                    </button>
-
-                                                                    <button type="button" class="dropdown-item"
-                                                                            v-if="ingredient.always_use_plural_unit"
-                                                                            @click="ingredient.always_use_plural_unit = false">
-                                                                        <i class="fas fa-filter fa-fw"></i>
-                                                                        {{ $t("Use_Plural_Unit_Simple") }}
-                                                                    </button>
-
-                                                                    <button type="button" class="dropdown-item"
-                                                                            v-if="!ingredient.always_use_plural_food"
-                                                                            @click="ingredient.always_use_plural_food = true">
-                                                                        <i class="fas fa-filter fa-fw"></i>
-                                                                        {{ $t("Use_Plural_Food_Always") }}
-                                                                    </button>
-
-                                                                    <button type="button" class="dropdown-item"
-                                                                            v-if="ingredient.always_use_plural_food"
-                                                                            @click="ingredient.always_use_plural_food = false">
-                                                                        <i class="fas fa-filter fa-fw"></i>
-                                                                        {{ $t("Use_Plural_Food_Simple") }}
-                                                                    </button>
-
-
-                                                                    <button type="button" class="dropdown-item"
-                                                                            @click="copyTemplateReference(index, ingredient)">
-                                                                        <i class="fas fa-code"></i>
-                                                                        {{ $t("Copy_template_reference") }}
-                                                                    </button>
-                                                                    <button type="button" class="dropdown-item"
-                                                                            @click="duplicateIngredient(step, ingredient, index + 1)">
-                                                                        <i class="fas fa-copy"></i>
-                                                                        {{ $t("Copy") }}
-                                                                    </button>
-                                                                    <button type="button" class="dropdown-item"
                                                                             v-if="index > 0"
                                                                             @click="moveIngredient(step, ingredient, index-1)">
                                                                         <i class="fas fa-arrow-up"></i>
@@ -1172,19 +1111,6 @@ export default {
         removeNutrition: function () {
             this.recipe.nutrition = null
         },
-        copyTemplateReference: function (index, ingredient) {
-            const el = document.createElement("textarea")
-
-            let tag = `\u007B\u007B ingredients[${index}] \u007D\u007D`
-            if (ingredient.food !== null) {
-                tag += `\u007B# ${ingredient.food.name} #\u007D`
-            }
-            el.value = tag
-            document.body.appendChild(el)
-            el.select()
-            document.execCommand("copy")
-            document.body.removeChild(el)
-        },
         normalizeEnergy: function () {
             if (this.recipe.nutrition && this.recipe.nutrition.calories) {
                 this.recipe.nutrition.calories = convertEnergyToCalories(this.recipe.nutrition.calories)
@@ -1226,11 +1152,6 @@ export default {
                 })
             })
         },
-        duplicateIngredient: function (step, ingredient, new_index) {
-            delete ingredient.id
-            ingredient = JSON.parse(JSON.stringify(ingredient))
-            step.ingredients.splice(new_index < 0 ? 0 : new_index, 0, ingredient)
-        }
     },
 }
 </script>
