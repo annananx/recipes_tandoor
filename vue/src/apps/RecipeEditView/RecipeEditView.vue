@@ -101,49 +101,6 @@
 
             <div class="row pt-2">
                 <div class="col-md-12">
-                    <div class="card mt-2 mb-2">
-                        <div class="card-body pr-2 pl-2 pr-md-5 pl-md-5 pt-3 pb-3">
-                            <h6>{{ $t('Properties') }} <small class="text-muted"> {{ $t('per_serving') }}</small></h6>
-
-                            <div class="alert alert-info" role="alert">
-                                {{ $t('recipe_property_info') }}
-                            </div>
-
-                            <div class="d-flex mt-2" v-for="p in recipe.properties" v-bind:key="p.id">
-                                <div class="flex-fill w-50">
-                                    <generic-multiselect
-                                        @change="p.property_type = $event.val"
-                                        :initial_single_selection="p.property_type"
-                                        :label="'name'"
-                                        :model="Models.PROPERTY_TYPE"
-                                        :limit="25"
-                                        :multiple="false"
-                                    ></generic-multiselect>
-                                </div>
-                                <div class="flex-fill w-50">
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" v-model="p.property_amount">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" v-if="p.property_type !== null && p.property_type.unit !== ''">{{ p.property_type.unit }}</span>
-                                            <button class="btn btn-danger" @click="deleteProperty(p)"><i class="fa fa-trash fa-fw"></i></button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="flex-row mt-2">
-                                <div class="flex-column w-25 offset-4">
-                                    <button class="btn btn-success btn-block" @click="addProperty()"><i class="fa fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row pt-2">
-                <div class="col-md-12">
 
 
                     <b-card-header header-tag="header" class="p-1" role="tab">
@@ -1139,14 +1096,6 @@ export default {
         addKeyword: function (tag) {
             let new_keyword = {label: tag, name: tag}
             this.recipe.keywords.push(new_keyword)
-        },
-        addProperty: function () {
-            this.recipe.properties.push(
-                {'property_amount': 0, 'property_type': null}
-            )
-        },
-        deleteProperty: function (recipe_property) {
-            this.recipe.properties = this.recipe.properties.filter(p => p.id !== recipe_property.id)
         },
         searchKeywords: function (query) {
             let apiFactory = new ApiApiFactory()
