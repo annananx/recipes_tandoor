@@ -11,13 +11,13 @@
                 <i class="ingredients__check ingredients__check_checked far fa-check-circle text-success" v-if="ingredient.checked"></i>
                 <i class="ingredients__check ingredients__check_checked_false far fa-check-circle text-primary" v-if="!ingredient.checked"></i>
             </td>
-            <td class="ingredients__amount text-nowrap" @click="done">
+            <td class="ingredients__amount text-nowrap align-baseline" @click="done">
                 <span class="ingredients__amount" :class="amountClass" v-if="ingredient.amount !== 0 && !ingredient.no_amount" v-html="amount"></span>
             </td>
-            <td class="ingredients__unit" @click="done">
+            <td class="ingredients__unit align-baseline" @click="done">
                 <span v-if="ingredient.unit !== null && !ingredient.no_amount" :class="unitClass">{{ unitName }}</span>
             </td>
-            <td class="ingredients__food" :class="foodClass" @click="done">
+            <td class="ingredients__food align-baseline" :class="foodClass" @click="done">
                 <template v-if="ingredient.food !== null">
                     <a :href="resolveDjangoUrl('view_recipe', ingredient.food.recipe.id)" v-if="ingredient.food.recipe !== null" target="_blank" rel="noopener noreferrer">
                         {{ foodName }}
